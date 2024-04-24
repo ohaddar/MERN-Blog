@@ -1,0 +1,94 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.Login {
+  padding-right: 1rem;
+}
+.Register {
+  padding-left: 1rem;
+}
+p {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  padding: 6%;
+  margin: 0%;
+  width: 100%;
+  white-space: pre-line;
+}
+
+h2 {
+  margin-left: 3rem;
+  flex: 1;
+  margin: 0;
+  margin-bottom: -2rem;
+}
+img {
+  height: 15rem;
+  max-width: 100%;
+  width: 50rem;
+}
+
+.postsBoady {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 6rem;
+}
+.post {
+  display: flex;
+  margin-bottom: 5rem;
+}
+.info {
+  display: flex;
+  justify-content: center;
+  color: #aaa;
+}
+.time {
+  margin-left: 1rem;
+}
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.postTitle {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.Register {
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 4rem;
+}
+.Login {
+  padding-top: 4rem;
+
+  max-width: 400px;
+  margin: 0 auto;
+}
+input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px 7px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+}
+button {
+  height: 2rem;
+  width: 100%;
+  display: block;
+
+  margin-top: 0.5rem;
+}
+form h1 {
+  text-align: center;
+}
