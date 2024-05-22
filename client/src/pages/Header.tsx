@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
-export default function Header() {
+import { AuthContext } from "../Files/AuthContext";
+import { useContext } from "react";
+
+export const Header: React.FC = () => {
+  const { isAuthenticated, logout } = useContext(AuthContext);
+
   return (
-    <div className="Header">
-      <Link to="/" className="Logo">
-        MyBlog
-      </Link>
-      <nav className="headerNav">
-        <Link to="/Login" className="Login">
-          Login
+    <header className="Header">
+      <nav>
+        <Link to="/" className="Logo">
+          MyBlog
         </Link>
-        <Link to="/Register" className="Register">
-          Register
-        </Link>
+        {isAuthenticated ? (
+          <button onClick={logout}>Logout</button>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
       </nav>
-    </div>
+    </header>
   );
-}
+};
