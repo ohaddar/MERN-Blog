@@ -46,13 +46,13 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
-        <h1>Log in to your account</h1>
-      </div>
+      <h1 className="ml-2 text-center text-2xl font-bold  text-gray-900  tracking-tight leading-9">
+        Login to your account
+      </h1>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium leading-6 text-gray-900">
+            <label className="block text-sm font-medium leading-6  text-gray-900">
               Email Adress
             </label>
             <div className="mt-2">
@@ -98,7 +98,7 @@ const LoginPage: React.FC = () => {
                 href="#"
                 className="font-semibold text-indigo-600 hover:text-indigo-500"
               >
-                Don't Have An Account: Register
+                Don't Have An Account? Register
               </a>
             </div>
             <div className="text-sm">
@@ -106,7 +106,7 @@ const LoginPage: React.FC = () => {
                 href="#"
                 className="font-semibold text-indigo-600 hover:text-indigo-500"
               >
-                Forgotten Password
+                Forgot Password?
               </a>
             </div>
           </div>
