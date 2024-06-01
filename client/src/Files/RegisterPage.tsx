@@ -29,6 +29,7 @@ const RegisterPage: React.FC = () => {
         method: "POST",
         body: JSON.stringify(formState),
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
       });
 
       const data = await response.json();

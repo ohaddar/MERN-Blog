@@ -3,12 +3,21 @@ const cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 const User = require("./models/User");
+const Post = require("./models/post");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const salt = bcrypt.genSaltSync(10);
 const secret = "jjkehdh3ekjfhi3f8wjkehfjkwhejkfd";
 const cookieParser = require("cookie-parser");
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+const multer = require("multer");
+const uploadMiddleware = multer({ dest: "uploads/" });
+const fs = require("fs");
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
@@ -49,6 +58,25 @@ app.post("/register", async (req, res) => {
   res.cookie("token", token, { httpOnly: true, sameSite: "Lax" });
 
   res.json({ token });
+});
+
+app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
+  const { originalname, path } = req.file;
+  const parts = originalname.split(".");
+  const ext = parts[parts.length - 1];
+  const newPath = path + "." + ext;
+
+  fs.renameSync(path, newPath);
+
+  const { title, summary, content } = req.body;
+  const postDoc = await Post.create({
+    title,
+    summary,
+    content,
+    cover: newPath,
+  });
+
+  res.json(postDoc);
 });
 
 // Middleware to handle errors (optional)

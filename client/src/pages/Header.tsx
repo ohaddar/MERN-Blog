@@ -8,16 +8,19 @@ export const Header: React.FC = () => {
   return (
     <header>
       <nav className="flex justify-between items-center py-4 px-6">
-        <Link to="/" className="ms-6 mt-4 font-bold ">
+        <Link to="/" className="ms-4">
           MyBlog
         </Link>
         {isAuthenticated ? (
-          <button
-            onClick={logout}
-            className="text-white bg-red-500 px-4 py-2 rounded"
-          >
-            Logout
-          </button>
+          <div className="flex space-x-4">
+            <Link to="/create" className="">
+              {" "}
+              Create new post
+            </Link>
+            <a onClick={logout} className="">
+              Logout
+            </a>
+          </div>
         ) : (
           <div className=" flex space-x-4 ">
             <Link to="/login" className="px-4 py-2 font-bold ">
