@@ -17,9 +17,9 @@ export const Header: React.FC = () => {
               {" "}
               Create new post
             </Link>
-            <a onClick={logout} className="">
+            <Link onClick={logout} to="/">
               Logout
-            </a>
+            </Link>
           </div>
         ) : (
           <div className=" flex space-x-4 ">

@@ -6,6 +6,7 @@ import LoginPage from "./Files/LoginPage";
 import RegisterPage from "./Files/RegisterPage";
 import Layout from "./pages/Layout";
 import { Route, Routes } from "react-router-dom";
+import PostDetail from "./pages/PostDetail";
 
 function App() {
   return (
@@ -15,8 +16,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<IndexPage />} />
             <Route path="/Login" element={<LoginPage />} />
+            <Route path="/Logout" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/create" element={<CreatePostPage />} />
+            <Route path="/posts/:id" element={<PostDetail />} />
           </Route>
         </Routes>
       </PostProvider>

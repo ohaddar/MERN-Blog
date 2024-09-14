@@ -1,4 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from "react";
+import { Post } from "../types";
+
 interface PostContextProps {
   title: string;
   summary: string;
@@ -8,7 +10,11 @@ interface PostContextProps {
   setSummary: (summary: string) => void;
   setContent: (content: string) => void;
   setFile: (file: File | null) => void;
+  posts: Post[];
+  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
+  addPost: (post: Post) => void;
 }
+
 const CreatePostContext = createContext<PostContextProps | undefined>(
   undefined
 );
@@ -27,6 +33,10 @@ export const PostProvider: React.FC<PostProviderProps> = ({ children }) => {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [file, setFile] = useState<File | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const addPost = (post: Post) => {
+    setPosts((prevPosts) => [...prevPosts, post]);
+  };
 
   return (
     <CreatePostContext.Provider
@@ -35,10 +45,14 @@ export const PostProvider: React.FC<PostProviderProps> = ({ children }) => {
         summary,
         content,
         file,
+        posts,
+
         setTitle,
         setSummary,
         setContent,
         setFile,
+        addPost,
+        setPosts,
       }}
     >
       {children}

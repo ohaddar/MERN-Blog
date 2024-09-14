@@ -12,12 +12,14 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (token: string) => void;
   logout: () => void;
+  post: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>({
   isAuthenticated: false,
   login: () => {},
   logout: () => {},
+  post: () => {},
 });
 
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({
@@ -32,6 +34,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
       setIsAuthenticated(true);
     }
   }, []);
+  const post = () => {
+    // Set authentication state and navigate to the homepage
+    setIsAuthenticated(true);
+    navigate("/");
+  };
 
   const login = (token: string) => {
     localStorage.setItem("token", token);
@@ -46,7 +53,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout, post }}>
       {children}
     </AuthContext.Provider>
   );
