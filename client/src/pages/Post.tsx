@@ -44,12 +44,11 @@ export const Post: React.FC = () => {
             )}
 
             <section className="text-gray-700 leading-relaxed text-sm md:text-base mb-4">
-              {/* Affiche un extrait du contenu */}
               {post.summary}
             </section>
 
             <Link
-              to={`/posts/${post._id}`} // Redirige vers la page de détail de l'article
+              to={`/posts/${post._id}`}
               className="text-blue-500 hover:underline"
             >
               Lire la suite

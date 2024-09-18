@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import React, {
   createContext,
   useState,
@@ -35,7 +34,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     }
   }, []);
   const post = () => {
-    // Set authentication state and navigate to the homepage
     setIsAuthenticated(true);
     navigate("/");
   };

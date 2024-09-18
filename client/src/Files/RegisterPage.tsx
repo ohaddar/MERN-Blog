@@ -23,10 +23,8 @@ const RegisterPage: React.FC = () => {
 
   const { login } = useAuth();
 
-  // Email regex: ensures valid format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Password regex: Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
@@ -47,13 +45,11 @@ const RegisterPage: React.FC = () => {
       existingUser: "",
     };
 
-    // Validate Username
     if (!formState.userName || formState.userName.trim() === "") {
       newErrors.userName = "Username is required.";
       valid = false;
     }
 
-    // Validate Email
     if (!formState.email) {
       newErrors.email = "Email is required.";
       valid = false;
@@ -62,7 +58,6 @@ const RegisterPage: React.FC = () => {
       valid = false;
     }
 
-    // Validate Password
     if (!formState.password) {
       newErrors.password = "Password is required.";
       valid = false;
@@ -72,7 +67,6 @@ const RegisterPage: React.FC = () => {
       valid = false;
     }
 
-    // Simulating backend check for existing username or email
     if (
       formState.userName === "existingUser" ||
       formState.email === "existing@example.com"

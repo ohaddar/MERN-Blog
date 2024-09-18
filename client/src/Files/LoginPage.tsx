@@ -20,10 +20,10 @@ const LoginPage: React.FC = () => {
 
   const { login } = useAuth();
 
-  // Email regex: ensures valid format
+  // Email regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Password regex: Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
+  // Password regex
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 

@@ -25,14 +25,14 @@ export const CreatePostPage: React.FC = () => {
   };
 
   const createNewPost = async (e: React.FormEvent) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
     const data = new FormData();
     data.append("title", title);
     data.append("summary", summary);
     data.append("content", content);
     if (file) {
-      data.append("file", file); // Append the file to FormData
+      data.append("file", file);
     }
 
     try {
@@ -45,15 +45,12 @@ export const CreatePostPage: React.FC = () => {
         const result = await response.json();
         console.log("Success:", result);
 
-        // Assurez-vous que result contient l'ID
-        // Exemple de structure attendue de result : { _id: "...", title: "...", ... }
         if (result._id) {
-          addPost(result); // Ajoutez le post au contexte avec l'ID inclus
+          addPost(result);
         } else {
           console.error("Post creation failed: Missing post ID");
         }
 
-        // Optionnel : rediriger ou effectuer d'autres actions après la création du post
         post();
       } else {
         const errorText = await response.text();

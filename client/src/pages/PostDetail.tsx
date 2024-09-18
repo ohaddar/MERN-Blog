@@ -6,17 +6,15 @@ import { useAuth } from "../Files/AuthContext";
 const PostDetail = () => {
   const { id } = useParams();
   const [post, setPost] = useState<Post | null>(null);
-  const { isAuthenticated } = useAuth(); // Vérifier si l'utilisateur est connecté
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!isAuthenticated) {
-      // Si l'utilisateur n'est pas connecté, le rediriger vers la page de connexion
       navigate("/login");
       return;
     }
 
-    // Logique pour récupérer les détails du post si l'utilisateur est connecté
     fetch(`http://localhost:4000/posts/${id}`)
       .then((response) => response.json())
       .then((data) => setPost(data))
